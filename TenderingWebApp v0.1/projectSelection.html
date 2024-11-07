@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin-top: 10px;
+            background-color: #113FFF;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Positioning for name section */
+        .top-section {
+            margin-bottom: 20px;
+        }
+
+        /* Layout for the project selection section */
+        .project-selection {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .left-section,
+        .right-section {
+            width: 100%;
+        }
+
+        .right-section button {
+            width: 100%; /* Make the Add Project button full width */
+        }
+    </style>
+    <script src="WebSiteFiles/selection.js" defer></script>
+</head>
+<body>
+    <div class="form-container">
+        <h2> Enter your Name</h2>
+        <!-- Name selection at the top -->
+        <div class="top-section">
+            <label for="name">Name:</label>
+            <input type="text" id="userNameField" name="name" required>
+        </div>
+    <h2>Select Your Project</h2>
+        <!-- Choose Project and New Project sections side by side -->
+        <div class="project-selection">
+            <div class="left-section">
+                <label for="project">Choose Project:</label>
+                <select id="projectsDDL" name="project" required>
+                    <option value="">Select a project</option>
+                </select>
+                <button type="button" id="useOldProjectButton">Start With selected project</button>
+            </div>
+
+            <div class="right-section">
+                <label for="newProjectName">New Project Name:</label>
+                <input type="text" id="newProjectName" placeholder="Enter project name">
+                <button type="button" id="addEmptyProjectButton">Add Project</button>
+                <button type="button" id="addTemplatedProjectButton">Add Project from template</button>
+            </div>
+        </div>
+    
+    </div>
+</body>
+</html>
