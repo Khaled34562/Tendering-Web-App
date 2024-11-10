@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* WIP 
-  Local save function
-  Gotta be done before Sunday
+  Local save function = Done. 
   */
 
   /* Too long, needs a refactor: 
@@ -198,13 +197,14 @@ document.addEventListener("DOMContentLoaded", () => {
       const controlPanel = document.getElementById("controlPanel");
       controlPanel.classList.add("expanded");
       
-      // 
+      
       createGlobalSelectorFunctionality();
       createCollapseButtonFunctionality();
       createEquipmentButtonFunctionality();
       createSaveButtonFunctionalty();
-      createConfirmButtonFunctionality();
-      createCableTableFunctionality(); // cable table function
+      
+      //createConfirmButtonFunctionality();
+      //createCableTableFunctionality(); // cable table function
     } 
     else if(page == "review"){
       createReturnToMainPageButtonFunctionality();
@@ -2604,8 +2604,11 @@ document.addEventListener("DOMContentLoaded", () => {
    * createSaveButtonFunctionalty: creates the functionality for the main page's save button
    */
   function createSaveButtonFunctionalty(){
+    
+    console.log("clicked save button for project", sessionStorage.getItem("project"));
+    
     const savePageBtn = document.getElementById("saveBtn");
-  
+    
     savePageBtn.addEventListener("click", ()=>{
       storePageInStorage("main", "local");
     });
@@ -2932,7 +2935,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function storePageInStorage(page, storage) {
     
     // Get the current project from session memory
-    tempProject = JSON.parse(sessionStorage.getItem("project")); 
+    tempProject = JSON.parse(sessionStorage.getItem("project"));  
 
     var database = Array();
 
@@ -2967,15 +2970,13 @@ document.addEventListener("DOMContentLoaded", () => {
       
     });
 
-    
-
     // Temporarly commented
     
     
     tempProject.database = database; 
     
     
-    projectList = localStorage.getItem("projectList") || [];
+    projectList = JSON.parse(localStorage.getItem("projectList")) || [];
 
     // if old Project
     var saved = false
@@ -2991,6 +2992,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     projectList = JSON.stringify(projectList);
+    
+    
 
     localStorage.setItem("projectList", projectList); 
 
@@ -3022,8 +3025,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-
 
   /**
    * highlightSelectedOffer: highlight the selected offer
@@ -3434,51 +3435,318 @@ document.addEventListener("DOMContentLoaded", () => {
       
     });
 
+    // Repeated code, should be re-done later
     temp2 = document.getElementById("addTemplatedProjectButton");
 
     temp2.addEventListener("click", ()=>{
-      alert("not implemented yet"); 
+      if (!isValidNameField(nameField.id)){
+        alert("user name field must be filled");
+      }
+      else if (!isValidNameField(projectNameField.id)){
+        alert("project name field must be filled");
+      }
+      // Template is 240 lines 
+      else {
+        tempProject = new Project(projectNameField.value, nameField.value, [
+          {
+            "name": "GIS",
+            "voltage": "EHV",
+            "id": "EHV-GIS",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "GIS",
+            "voltage": "HV",
+            "id": "HV-GIS",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "HGIS",
+            "voltage": "EHV",
+            "id": "EHV-HGIS",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "AIS",
+            "voltage": "HV",
+            "id": "HV-AIS",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Power Transformer",
+            "voltage": "EHV",
+            "id": "EHV-Power Transformer",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Power Transformer",
+            "voltage": "HV",
+            "id": "HV-Power Transformer",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Grouding Transformer",
+            "voltage": "EHV",
+            "id": "EHV-Grouding Transformer",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Power Transformer",
+            "voltage": "MV",
+            "id": "MV-Power Transformer",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Shunt Reactor",
+            "voltage": "EHV",
+            "id": "EHV-Shunt Reactor",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Shunt Reactor",
+            "voltage": "HV",
+            "id": "HV-Shunt Reactor",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Shunt Reactor",
+            "voltage": "MV",
+            "id": "MV-Shunt Reactor",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Switchgear",
+            "voltage": "MV",
+            "id": "MV-Switchgear",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Protection, Control, & SAS",
+            "voltage": "General",
+            "id": "General-Protection, Control, & SAS",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "SCADA",
+            "voltage": "General",
+            "id": "General-SCADA",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "Telecom",
+            "voltage": "General",
+            "id": "General-Telecom",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          },
+          {
+            "name": "SOE, DFR & DSM",
+            "voltage": "General",
+            "id": "General-SOE, DFR & DSM",
+            "selection": "Include",
+            "type": "regular",
+            "listOfOffers": []
+          }, 
+      {
+          "name": "SIS System",
+          "voltage": "General",
+          "id": "General-SIS System",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "Surge Arrestor",
+          "voltage": "EHV",
+          "id": "EHV-Surge Arrestor",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "Surge Arrestor",
+          "voltage": "HV",
+          "id": "HV-Surge Arrestor",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "Surge Arrestor",
+          "voltage": "MV",
+          "id": "MV-Surge Arrestor",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "Capacitor Banks",
+          "voltage": "MV",
+          "id": "MV-Capacitor Banks",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "CVT",
+          "voltage": "General",
+          "id": "General-CVT",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "Outdoor CTs",
+          "voltage": "General",
+          "id": "General-Outdoor CTs",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "NGR",
+          "voltage": "General",
+          "id": "General-NGR",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "Grounding",
+          "voltage": "General",
+          "id": "General-Grounding",
+          "selection": "Include",
+          "type": "auxuliary",
+          "listOfOffers": []
+        },
+        {
+          "name": "LV Power & Control Cables",
+          "voltage": "General",
+          "id": "General-LV Power & Control Cables",
+          "selection": "Include",
+          "type": "auxuliary",
+          "listOfOffers": []
+        },
+        {
+          "name": "Aux. Equipment",
+          "voltage": "General",
+          "id": "General-Aux. Equipment",
+          "selection": "Include",
+          "type": "auxuliary",
+          "listOfOffers": []
+        },
+        {
+          "name": "Battery Charger & Battery Banks",
+          "voltage": "General",
+          "id": "General-Battery Charger & Battery Banks",
+          "selection": "Include",
+          "type": "regular",
+          "listOfOffers": []
+        },
+        {
+          "name": "Civil, Electromechanical works",
+          "voltage": "General",
+          "id": "General-Civil, Electromechanical works",
+          "selection": "Include",
+          "type": "auxuliary",
+          "listOfOffers": []
+        },
+        {
+          "name": "Client Special Requirments",
+          "voltage": "General",
+          "id": "General-Client Special Requirments",
+          "selection": "Include",
+          "type": "auxuliary",
+          "listOfOffers": []
+        }
+        ]);
+        tempProject = JSON.stringify(tempProject);
+        sessionStorage.setItem("project", tempProject);
+        window.open("WebSiteFiles/mainPage.html", "_self");
+      } 
     });
   } 
 
-  // Not implemented yet
   function createSelectOldProjectButtonFunctionality(){
 
     fillDDL();
 
     // need to use "projectList" from local storage"
-    temp = document.getElementById("useOldProjectButton"); 
-
-    temp.addEventListener("click", () => {
-      alert("not implemented yet ");
+    var button = document.getElementById("useOldProjectButton"); 
+    var ddl = document.getElementById("projectsDDL");
+    button.addEventListener("click", () => {
+      if(!isValidNameField("userNameField")) {
+        alert("User name field must be filled");
+      }
+      else if(ddl.selectedIndex == 0) {
+        alert("You must select a valid project");
+      }
+      else {
+          // find the project from local storage and load it into session storage
+          var project = JSON.parse(localStorage.getItem("projectList"))[ddl.selectedIndex-1];
+          console.log(project);
+          sessionStorage.setItem("project", JSON.stringify(project));
+          window.open("WebSiteFiles/mainPage.html", "_self");
+        }
+      
     });
   
   }
 
   function fillDDL(){
-    ddl = document.getElementById("projectsDDL"); 
+    var ddl = document.getElementById("projectsDDL"); 
     const projects = JSON.parse(localStorage.getItem("projectList"));
 
+    // Right here I got the names of both projects
     console.log(projects); 
 
     projects.forEach((project) => {
       console.log("project ", project.name); 
+      var option = document.createElement("option");
+      option.text = project.name; 
+      ddl.add(option);
     });
-
   }
 
   function isValidNameField(fieldId){
     temp = document.getElementById(fieldId);
+    // Should also check if the name is in the employee list
+    // Should also check if the project name is vlaid
     if (temp.value){
       return true; 
     } 
     return false;
   }
-  /* To be Added 
-
-  Add equipment: Security : cyber and phyical. Regular  
-  */
-
+  
   // Call the main function to start the website
   main();
 });
