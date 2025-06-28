@@ -136,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // End of class declerations
+  
   var currentDocumentPath = String(document.getRootNode()["location"]["pathname"])
   
   var documentName = currentDocumentPath.split("/");
@@ -146,17 +147,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Remove .html 
   documentName = documentName.slice(0,-5); 
 
-  
-  
 
   //
   var equipmentList = [];
   
-  // From local storage
+  // From local storage, should be changed later
   var masterEquipmentsList = [];
 
   const pages = ["auth", "projectSelection", "mainPage", "reviewerView"]  
   
+
   // Main function, called whenever you start the page
   function main() {    
     // Need an if statment to handle all the possbible pages.  
@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const project = JSON.parse(sessionStorage.getItem(projectKey));
     database = project.database; 
     // end of temp code
-    /* Temp comment
+    /* Temp comment, why did I comment this? 
     const database = loadDatabaseFromStorage(databaseKey, storage);
     */
     mapDatabaseToPage(database, page);
@@ -532,22 +532,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // This one is in desperate need for reafactoring, it's hardly even readable at this point
   /**
    * Create equipment table refactor: 
+   * 
    * 6 Lists of columns (regular - main, regular review, ...) -> Done
    * HEADER: 
-   * Create table header col span -> Done
-   * create header row -> Done
-   * loop through them to create header cells
-   * assign text contnet 
-   * add cells to second header
-   * set table header col span to lenght of column list 
+   *  Create table header col span -> Done
+   *  create header row -> Done
+   *  loop through them to create header cells
+   *  assign text contnet 
+   *  add cells to second header
+   *  set table header col span to lenght of column list 
    * BODY: 
-   * Empty, will be filled by the system
+   *  Empty, will be filled by the system
    * FOOTER: 
-   * only in main page
+   *  only in main page
    */
-
-
-
 
   /**
    * createEquipMentTable: create a single equipment table
@@ -706,7 +704,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Header cells, fill using the arrays
 
-    // Main page
+    // Main page, should this be a switch-case? 
     if (equipmentType == "regular" && page == "main"){
       columns = regularMainColumns; 
     }
@@ -1470,8 +1468,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /**
-   * 
-   * @param {Number []} array 
+   * findMinimum: Finds the minimum price for a certain array of offer prices. 
+   * @param {Number []} array of offer prices
    * @returns {Number} minimumPrice
    */
   function findMinimum(prices) {
