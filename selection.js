@@ -198,17 +198,24 @@ document.addEventListener("DOMContentLoaded", () => {
     if (page == "main"){
       const controlPanel = document.getElementById("controlPanel");
       controlPanel.classList.add("expanded");
-      // Testing VV 
-      document.getElementById("tempTestBtn")?.addEventListener("click", () => {
-      alert("Test button clicked!");
-      });
-      // Testing ^^
+      
 
       createGlobalSelectorFunctionality();
       createCollapseButtonFunctionality();
       createEquipmentButtonFunctionality();
       createSaveButtonFunctionalty();
       
+      // Testing something VV 
+      // Add test button listener
+        const testButton = document.getElementById("tempTestBtn");
+        if (testButton) {
+            testButton.addEventListener("click", () => {
+                alert("Test button clicked! JavaScript is working.");
+            });
+        } else {
+            console.error("Test button not found in DOM");
+        }
+        // Testing something ^^ 
       //createConfirmButtonFunctionality();
       //createCableTableFunctionality(); // cable table function
     } 
