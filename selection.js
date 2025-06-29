@@ -198,8 +198,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (page == "main"){
       const controlPanel = document.getElementById("controlPanel");
       controlPanel.classList.add("expanded");
-      
-      
+      // Testing VV 
+      document.getElementById("tempTestBtn")?.addEventListener("click", () => {
+      alert("Test button clicked!");
+      });
+      // Testing ^^
+
       createGlobalSelectorFunctionality();
       createCollapseButtonFunctionality();
       createEquipmentButtonFunctionality();
