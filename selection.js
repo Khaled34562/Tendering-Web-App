@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     else {
       // Error page should be here
-      alert("Page doesn't exist");
+      //alert("Page doesn't exist");
     }
     
   }
