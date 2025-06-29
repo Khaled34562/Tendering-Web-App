@@ -205,17 +205,7 @@ document.addEventListener("DOMContentLoaded", () => {
       createEquipmentButtonFunctionality();
       createSaveButtonFunctionalty();
       
-      // Testing something VV 
-      // Add test button listener
-        const testButton = document.getElementById("tempTestBtn");
-        if (testButton) {
-            testButton.addEventListener("click", () => {
-                alert("Test button clicked! JavaScript is working.");
-            });
-        } else {
-            console.error("Test button not found in DOM");
-        }
-        // Testing something ^^ 
+       
       //createConfirmButtonFunctionality();
       //createCableTableFunctionality(); // cable table function
     } 
