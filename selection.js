@@ -180,7 +180,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       initializePage("review", "session", "project");
     }
-
+    else if (documentName == "index"){
+      console.log("redirect");
+    }
     else {
       // Error page should be here
       alert("Page doesn't exist");
