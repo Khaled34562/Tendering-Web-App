@@ -1,4 +1,4 @@
-<!DOCTYPE html>Add commentMore actions
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -72,8 +72,20 @@
         <div id="add-buttons-container"> 
           <button id="addEquipmentBtn">
             <img src="images/Add symbol.png" alt="" />
+            <script>addEquipButton.addEventListener("click", () => {
+      const body = document.getElementById("controlPanelBody");
+  
+      // new equipment row
+      addNewEquipmentRow(body);
+  
+      // row for save/discard options
+      addOptionsRow(body);
+
+      addEquipButton.setAttribute("hidden", "hidden")
+    });</script>
+
           </button>
-          <!--
+          <!-- currently broken
           <button id="add-cable-works-btn">
             Cable Works
           </button>
